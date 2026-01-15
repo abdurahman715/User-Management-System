@@ -10,7 +10,7 @@ const securePassword = async (password) => {
   }
 };
 //for send mail
-const sendvefifyMail = async (name, email, user_id) => {
+const sendverifyMail = async (name, email, user_id) => {
   try {
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -61,7 +61,7 @@ const insertUser = async (req, res) => {
     });
     const userData = await user.save();
     if (userData) {
-      sendvefifyMail(req.body.name, req.body.email, userData._id);
+      sendverifyMail(req.body.name, req.body.email, userData._id);
       return res.render("registration", {
         message:
           "Your registration has been successfully,please verify your email",
@@ -75,7 +75,7 @@ const insertUser = async (req, res) => {
     console.log(error.message);
   }
 };
-const verfyEmail = async (req, res) => {
+const verifyEmail = async (req, res) => {
   try {
     const updateInfo = await User.updateOne(
       { _id: req.query.id },
@@ -131,7 +131,7 @@ const loadHome = async (req, res) => {
 module.exports = {
   loadRegister,
   insertUser,
-  verfyEmail,
+  verifyEmail,
   loginLoad,
   verifyLogin,
   loadHome,
