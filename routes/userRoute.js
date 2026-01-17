@@ -30,6 +30,7 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage: storage });
+user_route.use(express.static("public"));
 user_route.get("/register", auth.isLogout, userController.loadRegister);
 user_route.post("/register", upload.single("image"), userController.insertUser);
 user_route.get("/verify", userController.verifyEmail);
@@ -40,11 +41,14 @@ user_route.get("/home", auth.isLogin, userController.loadHome);
 user_route.get("/logout", auth.isLogin, userController.userLogout);
 user_route.get("/forget", auth.isLogout, userController.forgetLoad);
 user_route.post("/forget", userController.forgetVerify);
-
 user_route.get(
   "/forget-password",
   auth.isLogout,
   userController.forgetPasswordLoad
 );
 user_route.post("/forget-password", userController.resetPassword);
+user_route.get("/verification", userController.verificationLoad);
+user_route.post("/verification", userController.sentVerificationLink);
+user_route.get("/edit", auth.isLogin, userController.editLoad);
+user_route.post("/edit", upload.single("image"), userController.updateProfile);
 module.exports = user_route;

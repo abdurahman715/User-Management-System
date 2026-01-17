@@ -159,8 +159,8 @@ const verifyLogin = async (req, res) => {
 const loadHome = async (req, res) => {
   try {
     console.log(req.session.user_id);
-
-    return res.render("home");
+    const userData = await User.findById({ _id: req.session.user_id });
+    return res.render("home", { user: userData });
   } catch (error) {
     console.log(error.message);
   }
@@ -239,7 +239,74 @@ const userLogout = (req, res) => {
     console.log(error.message);
   }
 };
-
+//for verification send mail link
+const verificationLoad = async (req, res) => {
+  try {
+    res.render("verification");
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+const sentVerificationLink = async (req, res) => {
+  try {
+    const email = req.body.email;
+    const userData = await User.findOne({ email: email });
+    if (userData) {
+      sendverifyMail(userData.name, userData.email, userData._id);
+      res.render("verification", {
+        message: "Resend verification link in your mail,please check your mail",
+      });
+    } else {
+      res.render("verification", { message: "This email is not exist" });
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+const editLoad = async (req, res) => {
+  try {
+    const id = req.query.id;
+    const userData = await User.findById({ _id: id });
+    if (userData) {
+      res.render("edit", { user: userData });
+    } else {
+      res.redirect("/home");
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+const updateProfile = async (req, res) => {
+  try {
+    if (req.file) {
+      const userData = await User.findByIdAndUpdate(
+        { _id: req.body.user_id },
+        {
+          $set: {
+            name: req.body.name,
+            email: req.body.email,
+            mobile: req.body.mno,
+            image: req.file.filename,
+          },
+        }
+      );
+    } else {
+      const userData = await User.findByIdAndUpdate(
+        { _id: req.body.user_id },
+        {
+          $set: {
+            name: req.body.name,
+            email: req.body.email,
+            mobile: req.body.mno,
+          },
+        }
+      );
+    }
+    res.redirect("/home");
+  } catch (error) {
+    console.log(error.message);
+  }
+};
 module.exports = {
   loadRegister,
   insertUser,
@@ -252,4 +319,8 @@ module.exports = {
   forgetPasswordLoad,
   resetPassword,
   userLogout,
+  verificationLoad,
+  sentVerificationLink,
+  editLoad,
+  updateProfile,
 };
