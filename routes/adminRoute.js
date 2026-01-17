@@ -24,4 +24,12 @@ admin_route.get("/", auth.isLogout, adminController.loadLogin);
 admin_route.post("/", adminController.verifyLogin);
 admin_route.get("/home", auth.isLogin, adminController.loadDashbord);
 admin_route.get("/logout", auth.isLogin, adminController.logout);
+admin_route.get("/forget", auth.isLogout, adminController.forgetLoad);
+admin_route.post("/forget", adminController.forgetVerify);
+admin_route.get(
+  "/forget-password",
+  auth.isLogout,
+  adminController.forgetPasswordLoad
+);
+admin_route.post("/forget-password", adminController.resetPassword);
 module.exports = admin_route;
