@@ -32,4 +32,5 @@ admin_route.get(
   adminController.forgetPasswordLoad
 );
 admin_route.post("/forget-password", adminController.resetPassword);
+admin_route.get("/dashboard", auth.isLogin, adminController.adminDashboard);
 module.exports = admin_route;
