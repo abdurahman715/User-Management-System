@@ -11,6 +11,42 @@ const securePassword = async (password) => {
     console.log(error.message);
   }
 };
+//for send mail
+const addUserMail = async (name, email, password, user_id) => {
+  try {
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: config.emailUser,
+        pass: config.emailPassword,
+      },
+    });
+    const mailOptions = {
+      from: config.emailUser,
+      to: email,
+      subject: "Admin add you and verify your mail",
+      html:
+        "<p>Hii ," +
+        name +
+        ' ,Please click here to <a href = "http://127.0.0.1:3000/verify?id=' +
+        user_id +
+        '">Verify</a> Your mail</p><br><br><b>Email:-</b>' +
+        email +
+        "<br><b>Password:-</b>" +
+        password +
+        "",
+    };
+    transporter.sendMail(mailOptions, function (err, info) {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("Email has been sent:-", info.response);
+      }
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
 //for reset password send mail
 const sendResetPasswordMail = async (name, email, token) => {
   try {
@@ -161,6 +197,70 @@ const adminDashboard = async (req, res) => {
     console.log(error.message);
   }
 };
+const newUserLoad = async (req, res) => {
+  try {
+    res.render("new-user");
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+const addUser = async (req, res) => {
+  try {
+    const name = req.body.name;
+    const email = req.body.email;
+    const mno = req.body.mno;
+    const image = req.file.filename;
+    const password = randomstring.generate(8);
+    const spassword = await securePassword(password);
+    const user = new User({
+      name: name,
+      email: email,
+      mobile: mno,
+      image: image,
+      password: spassword,
+      is_admin: 0,
+    });
+    const userData = await user.save();
+    if (userData) {
+      addUserMail(name, email, password, userData._id);
+      res.redirect("/admin/dashboard");
+    } else {
+      res.render("new-user", { message: "Something went wrong" });
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+//edit user functionality
+const editUserLoad = async (req, res) => {
+  try {
+    const id = req.query.id;
+    const userData = await User.findById({ _id: id });
+    if (userData) {
+      res.render("edit-user", { user: userData });
+    } else {
+      res.redirect("/admin/dashboard");
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+const updateUsers = async (req, res) => {
+  try {
+    const userData = await User.findByIdAndUpdate(
+      { _id: req.body.id },
+      {
+        name: req.body.name,
+        email: req.body.email,
+        mobile: req.body.mno,
+        is_verified: req.body.verify,
+      }
+    );
+    res.redirect("/admin/dashboard");
+  } catch (error) {
+    console.log(error.message);
+  }
+};
 module.exports = {
   loadLogin,
   verifyLogin,
@@ -171,4 +271,8 @@ module.exports = {
   forgetPasswordLoad,
   resetPassword,
   adminDashboard,
+  newUserLoad,
+  addUser,
+  editUserLoad,
+  updateUsers,
 };

@@ -1,5 +1,6 @@
 <% include('../layouts/header.ejs') %>
 <h1>Admin Dashboard</h1>
+<a href="/admin/new-user">Add User</a>
 <table width="50%">
   <tr>
     <th>Name</th>
@@ -7,6 +8,7 @@
     <th>Mobile</th>
     <th>Image</th>
     <th>Verified</th>
+    <th>Actions</th>
   </tr>
   <% if(users.length > 0){ 
     for(let i=0;i<users.length;i++){
@@ -27,6 +29,7 @@
                     <%
                 }
             %></td>
+            <td><a href="/admin/edit-user?id=<%= users[i]._id %>">Edit</a></td>
         </tr>
         <%
     }
