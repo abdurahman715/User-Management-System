@@ -230,7 +230,6 @@ const verifyEmail = async (req, res) => {
       { _id: req.query.id },
       { $set: { is_verified: 1 } }
     );
-    console.log(updateInfo);
     return res.render("email-verified");
   } catch (error) {
     console.log(error.message);
