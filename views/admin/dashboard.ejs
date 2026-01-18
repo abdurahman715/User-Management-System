@@ -1,44 +1,77 @@
-<% include('../layouts/header.ejs') %>
-<h1>Admin Dashboard</h1>
-<a href="/admin/new-user">Add User</a>
-<table width="50%">
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Mobile</th>
-    <th>Image</th>
-    <th>Verified</th>
-    <th>Actions</th>
-  </tr>
-  <% if(users.length > 0){ 
-    for(let i=0;i<users.length;i++){
-        %>
-        <tr>
-            <td><%= users[i].name %></td>
-            <td><%= users[i].email %></td>
-            <td><%= users[i].mobile %></td>
-            <td><img src="/userImages/<%= users[i].image %>" width="100px" height="100px" alt="<%= users[i].mobile %>"></td>
-            <td><%
-                if(users[i].is_verified === 0){
-                    %>
-                    <p>Not verified</p>
-                    <%
-                }else{
-                    %>
-                    <p>Verified</p>
-                    <%
-                }
-            %></td>
-            <td><a href="/admin/edit-user?id=<%= users[i]._id %>">Edit</a></td>
-            <td><a href="/admin/delete-user?id=<%= users[i]._id %>">Delete</a></td>
-        </tr>
-        <%
-    }
-  }else{ %>
-  <tr>
-    <td colspan="5">Users Not Found</td>
-  </tr>
-  <% } %>
-</table>
-<a href="/admin/home">Back to home</a>
-<% include('../layouts/footer.ejs') %>
+<%- include('../layouts/header.ejs') %>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div class="card shadow">
+        <div class="card-body">
+
+          <h3 class="text-center mb-4">Admin Dashboard</h3>
+
+          <div class="mb-3 text-end">
+            <a href="/admin/new-user" class="btn btn-success">Add User</a>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table table-bordered text-center align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Mobile</th>
+                  <th>Image</th>
+                  <th>Verified</th>
+                  <th colspan="2">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if(users.length > 0){ 
+                  for(let i=0;i<users.length;i++){ %>
+                    <tr>
+                      <td><%= users[i].name %></td>
+                      <td><%= users[i].email %></td>
+                      <td><%= users[i].mobile %></td>
+                      <td>
+                        <img 
+                          src="/userImages/<%= users[i].image %>" 
+                          width="80" 
+                          height="80" 
+                          class="rounded-circle" 
+                          alt="<%= users[i].name %>" 
+                        />
+                      </td>
+                      <td>
+                        <% if(users[i].is_verified === 0){ %>
+                          <span class="text-danger">Not Verified</span>
+                        <% } else { %>
+                          <span class="text-success">Verified</span>
+                        <% } %>
+                      </td>
+                      <td>
+                        <a href="/admin/edit-user?id=<%= users[i]._id %>" class="btn btn-primary btn-sm">Edit</a>
+                      </td>
+                      <td>
+                        <a href="/admin/delete-user?id=<%= users[i]._id %>" class="btn btn-danger btn-sm">Delete</a>
+                      </td>
+                    </tr>
+                  <% } 
+                } else { %>
+                  <tr>
+                    <td colspan="7" class="text-center">Users Not Found</td>
+                  </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="mt-3 text-center">
+            <a href="/admin/home" class="btn btn-secondary">Back to Home</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../layouts/footer.ejs') %>
