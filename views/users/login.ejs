@@ -1,6 +1,6 @@
 <%- include('../layouts/header.ejs') %>
 
-<div class="container mt-5">
+<div class="container mt-5" style="padding-top: 100px;">
   <div class="row justify-content-center">
     <div class="col-md-6">
       <div class="card shadow">
@@ -8,7 +8,7 @@
           <h3 class="text-center mb-4">Login</h3>
 
           <% if (typeof message !== 'undefined') { %>
-          <div class="alert alert-danger text-center"><%= message %></div>
+          < class="alert alert-danger text-center"><%= message %></div>
           <% } %>
 
           <form action="/login" method="post">
@@ -38,10 +38,9 @@
           </form>
 
           <div class="text-center">
-            <a href="/forget" class="btn btn-primary w-30">Forget Password</a>
-            <a href="/verification" class="btn btn-primary w-40"
-              >Verify Email</a
-            >
+              <a href="/register" class="btn btn-primary">Register</a>
+            <a href="/forget" class="btn btn-primary ">Forget Password</a>
+            <a href="/verification" class="btn btn-primary">Verify Email</a>
           </div>
         </div>
       </div>

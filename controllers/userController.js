@@ -100,7 +100,6 @@ const sendverifyMail = async (name, email, user_id) => {
     console.log(error.message);
   }
 };
-//for reset password send mail
 // for reset password send mail
 const sendResetPasswordMail = async (name, email, token) => {
   try {
