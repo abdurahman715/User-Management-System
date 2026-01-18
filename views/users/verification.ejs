@@ -1,12 +1,37 @@
-<% include('../layouts/header.ejs') %>
-<h1>Verification</h1>
-<% if(typeof message !== 'undefined'){ %>
-<h4><%= message %></h4>
-<% } %>
-<form action="" method="post">
-  <input type="email" name="email" placeholder="Enter email" required />
-  <br /><br />
-  <input type="submit" value="Send verification link" />
-  <br /><br />
-</form>
-<% include('../layouts/footer.ejs') %>
+<%- include('../layouts/header.ejs') %>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-body">
+          <h3 class="text-center mb-4">Email Verification</h3>
+
+          <% if (typeof message !== 'undefined') { %>
+          <div class="alert alert-info text-center"><%= message %></div>
+          <% } %>
+
+          <form action="" method="post">
+            <div class="mb-3">
+              <input
+                type="email"
+                name="email"
+                class="form-control"
+                placeholder="Enter email"
+                required
+              />
+            </div>
+
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary">
+                Send Verification Link
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../layouts/footer.ejs') %>

@@ -1,24 +1,74 @@
 <%- include('../layouts/header.ejs') %>
-<h1>User Registration form</h1>
-<form action="" method="post" enctype="multipart/form-data">
-  <input type="text" name="name" placeholder="Enter your name" required />
-  <br /><br />
-  <input type="email" name="email" placeholder="Enter your email" required />
-  <br /><br />
-  <input type="text" name="mno" placeholder="Enter mobile number" required />
-  <br /><br />
-  <input type="file" name="image" required />
-  <br /><br />
-  <input
-    type="password"
-    name="password"
-    placeholder="Enter password"
-    required
-  />
-  <br /><br />
-  <input type="submit" value="Register" />
-</form>
 
-<% if(typeof message !== 'undefined'){ %>
-<p style="color: green"><%= message %></p>
-<% }%> <%- include('../layouts/footer.ejs') %>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-body">
+          <h3 class="text-center mb-4">User Registration</h3>
+
+          <form action="" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label class="form-label">Name</label>
+              <input
+                type="text"
+                name="name"
+                class="form-control"
+                placeholder="Enter your name"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input
+                type="email"
+                name="email"
+                class="form-control"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Mobile Number</label>
+              <input
+                type="text"
+                name="mno"
+                class="form-control"
+                placeholder="Enter mobile number"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Profile Image</label>
+              <input type="file" name="image" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input
+                type="password"
+                name="password"
+                class="form-control"
+                placeholder="Enter password"
+                required
+              />
+            </div>
+
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+          </form>
+
+          <% if (typeof message !== 'undefined') { %>
+          <div class="alert alert-success mt-3 text-center"><%= message %></div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../layouts/footer.ejs') %>

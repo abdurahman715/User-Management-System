@@ -30,9 +30,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 admin_route.use(express.static("public"));
 admin_route.get("/", auth.isLogout, adminController.loadLogin);
-// admin_route.get("*", function (req, res) {
-//   res.redirect("/admin");
-// });
 admin_route.post("/", adminController.verifyLogin);
 admin_route.get("/home", auth.isLogin, adminController.loadDashbord);
 admin_route.get("/logout", auth.isLogin, adminController.logout);

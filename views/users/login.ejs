@@ -1,21 +1,52 @@
-<% include('../layouts/header.ejs') %>
-<h1>Login</h1>
-<% if(typeof message !== 'undefined'){ %>
-<h4><%= message %></h4>
-<% } %>
-<form action="/login" method="post">
-  <input type="email" name="email" placeholder="Enter email" required />
-  <br /><br />
-  <input
-    type="password"
-    name="password"
-    placeholder="Enter password"
-    required
-  />
-  <br /><br />
-  <input type="submit" value="Login" />
-  <br /><br />
-</form>
-<a href="/forget">Forget Password</a>
-<a href="/verification">Verify Email</a>
-<% include('../layouts/footer.ejs') %>
+<%- include('../layouts/header.ejs') %>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-body">
+          <h3 class="text-center mb-4">Login</h3>
+
+          <% if (typeof message !== 'undefined') { %>
+          <div class="alert alert-danger text-center"><%= message %></div>
+          <% } %>
+
+          <form action="/login" method="post">
+            <div class="mb-3">
+              <input
+                type="email"
+                name="email"
+                class="form-control"
+                placeholder="Enter email"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <input
+                type="password"
+                name="password"
+                class="form-control"
+                placeholder="Enter password"
+                required
+              />
+            </div>
+
+            <div class="d-grid mb-3">
+              <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+          </form>
+
+          <div class="text-center">
+            <a href="/forget" class="btn btn-primary w-30">Forget Password</a>
+            <a href="/verification" class="btn btn-primary w-40"
+              >Verify Email</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../layouts/footer.ejs') %>
