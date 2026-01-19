@@ -8,7 +8,7 @@
           <h3 class="text-center mb-4">Login</h3>
 
           <% if (typeof message !== 'undefined') { %>
-          < class="alert alert-danger text-center"><%= message %></div>
+          <div class="alert alert-danger text-center"><%= message %></div>
           <% } %>
 
           <form action="/login" method="post">
@@ -37,7 +37,7 @@
             </div>
           </form>
 
-          <div class="text-center">
+          <div class="text-center d-flex justify-content-evenly">
               <a href="/register" class="btn btn-primary">Register</a>
             <a href="/forget" class="btn btn-primary ">Forget Password</a>
             <a href="/verification" class="btn btn-primary">Verify Email</a>
