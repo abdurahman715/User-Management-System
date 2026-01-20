@@ -6,14 +6,14 @@ const path = require("path");
 const adminController = require("../controllers/adminController");
 const auth = require("../middleware/adminAuth");
 const multer = require("multer");
+const bodyParser = require("body-parser");
 admin_route.use(
   session({
     secret: config.sessionSecret,
     resave: false,
     saveUninitialized: false,
-  })
+  }),
 );
-const bodyParser = require("body-parser");
 admin_route.use(bodyParser.json());
 admin_route.use(bodyParser.urlencoded({ extended: true }));
 admin_route.set("view engine", "ejs");
@@ -38,7 +38,7 @@ admin_route.post("/forget", adminController.forgetVerify);
 admin_route.get(
   "/forget-password",
   auth.isLogout,
-  adminController.forgetPasswordLoad
+  adminController.forgetPasswordLoad,
 );
 admin_route.post("/forget-password", adminController.resetPassword);
 admin_route.get("/dashboard", auth.isLogin, adminController.adminDashboard);
