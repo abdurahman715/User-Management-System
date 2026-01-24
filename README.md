@@ -10,7 +10,15 @@ Full-stack web application to manage tools, users, and shops with role-based acc
 - Users can rent, buy, or repair tools
 - JWT-based authentication
 ## Screenshots
-
-<img src="screenshots/dashboard.png" width="400" height="400">
-
-<img src="screenshots/dashboard.png" width="400" height="400">
+<table>
+  <tr>
+    <td align="center">
+      <b>User Registration</b><br>
+      <img src="screenshots/dashboard.png" width="350" height="350">
+    </td>
+    <td align="center">
+      <b>User Login</b><br>
+      <img src="screenshots/dashboard.png" width="350" height="350">
+    </td>
+  </tr>
+</table>
