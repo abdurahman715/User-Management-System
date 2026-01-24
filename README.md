@@ -9,5 +9,8 @@ Full-stack web application to manage tools, users, and shops with role-based acc
 - Shop owners can add/update tools
 - Users can rent, buy, or repair tools
 - JWT-based authentication
+## Screenshots
 
-![User Management System](screenshots/dashboard.png)
+<img src="screenshots/dashboard.png" width="800">
+
+<img src="screenshots/admin.png" width="800">
