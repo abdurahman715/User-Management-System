@@ -77,11 +77,11 @@ Admins can view, add, and edit users from a centralized dashboard.
   <tr>
     <td align="center">
       <b>User Registration</b><br>
-      <img src="screenshots/register.png" width="350">
+      <img src="screenshots/dashboard.png" width="350">
     </td>
     <td align="center">
       <b>User Login</b><br>
-      <img src="screenshots/login.png" width="350">
+      <img src="screenshots/dashboard.png" width="350">
     </td>
   </tr>
 </table>
