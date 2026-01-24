@@ -73,9 +73,15 @@ Admins can view, add, and edit users from a centralized dashboard.
 
 ## 📸 Screenshots
 
-Screenshots are available in the `screenshots/` folder.
-
-```md
-![Login Page](screenshots/login.png)
-![User Dashboard](screenshots/user-dashboard.png)
-![Admin Dashboard](screenshots/admin-dashboard.png)
+<table>
+  <tr>
+    <td align="center">
+      <b>User Registration</b><br>
+      <img src="screenshots/register.png" width="350">
+    </td>
+    <td align="center">
+      <b>User Login</b><br>
+      <img src="screenshots/login.png" width="350">
+    </td>
+  </tr>
+</table>
