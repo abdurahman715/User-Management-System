@@ -37,29 +37,39 @@ Admins can view, add, and edit users from a centralized dashboard.
 - Admin can edit existing users
 
 ---
-
 ## 🛠 Tech Stack
 
-### Frontend
-- HTML
-- CSS
-- Bootstrap
+<table>
+  <tr>
+    <th>Layer</th>
+    <th>Technologies Used</th>
+  </tr>
+  <tr>
+    <td>Frontend</td>
+    <td>HTML, CSS, Bootstrap</td>
+  </tr>
+  <tr>
+    <td>Backend</td>
+    <td>Node.js, Express.js</td>
+  </tr>
+  <tr>
+    <td>Database</td>
+    <td>MongoDB</td>
+  </tr>
+  <tr>
+    <td>View Engine</td>
+    <td>EJS</td>
+  </tr>
+  <tr>
+    <td>Authentication</td>
+    <td>JWT / Sessions</td>
+  </tr>
+  <tr>
+    <td>Email Service</td>
+    <td>Nodemailer</td>
+  </tr>
+</table>
 
-### Backend
-- Node.js
-- Express.js
-
-### Database
-- MongoDB
-
-### View Engine
-- EJS (Embedded JavaScript Templates)
-
-### Other Tools
-- Nodemailer (Email verification & password reset)
-- JWT / Sessions (Authentication)
-
----
 
 ## 📸 Screenshots
 
