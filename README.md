@@ -11,6 +11,6 @@ Full-stack web application to manage tools, users, and shops with role-based acc
 - JWT-based authentication
 ## Screenshots
 
-<img src="screenshots/dashboard.png" width="800">
+<img src="screenshots/dashboard.png" width="400" height="400">
 
-<img src="screenshots/admin.png" width="800">
+<img src="screenshots/dashboard.png" width="400" height="400">
